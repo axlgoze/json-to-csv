@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>Document</title>
+    <title>JSON to CSV format converter</title>
 </head>
 <body>
-    🐸
+    <main class="page-layout">
+        <h1 class="page-layout__title">JSON to CSV</h1>
+
+        <section class="converter">
+            <div class="converter__container">
+                
+                <div class="converter__input-group">
+                    <label class="converter__label" for="json-input">JSON</label>
+                    <textarea class="converter__control" id="json-input" name="json-input" placeholder="paste your JSON here"></textarea>
+                </div>
+
+                <div class="converter__input-group">
+                    <label class="converter__label" for="csv-input">CSV</label>
+                    <textarea class="converter__control" id="csv-input" name="csv-input" spellcheck="false" placeholder="get your CSV"></textarea>
+                </div>      
+            </div>
+
+            <button type="button" class="converter__btn" id="convert-btn">Convert</button>
+        </section>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
