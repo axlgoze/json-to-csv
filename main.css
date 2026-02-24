@@ -1,29 +1,27 @@
 /* =========================================
-   1. Reset
-   ========================================= */
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    min-height: 100vh;/* =========================================
    1. Variables de Color (:root)
    ========================================= */
 :root {
-    --color-bg-dark: #1C0770;      /* Azul muy oscuro (Fondo principal) */
-    --color-primary: #261CC1;      /* Azul medio (Contenedores) */
-    --color-secondary: #3A9AFF;    /* Azul claro (Bordes/Detalles) */
-    --color-accent: #F1FF5E;       /* Amarillo Neón (Botones/Acciones) */
+    --color-bg-dark: #1C0770;
+    /* Azul muy oscuro */
+    --color-primary: #261CC1;
+    /* Azul medio */
+    --color-secondary: #3A9AFF;
+    /* Azul claro */
+    --color-accent: #F7df1e;
+    /* Amarillo Neón */
     --color-text: #FFFFFF;
     --color-text-muted: #CBD5E1;
+    --color-text-secondary: #FDFBEE;
+
 }
 
 /* =========================================
    2. Reset & Base
    ========================================= */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -32,7 +30,7 @@ body {
 body {
     min-height: 100vh;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--color-bg-dark); /* Usando la paleta */
+    background-color: var(--color-bg-dark);
     color: var(--color-text);
     display: flex;
     justify-content: center;
@@ -41,46 +39,40 @@ body {
 }
 
 /* =========================================
-   3. Block: Main Layout
+   3. Bloque: Page Layout
    ========================================= */
-.main-container {
+.page-layout {
     width: 100%;
     max-width: 900px;
     text-align: center;
 }
 
-.main-container__title {
+.page-layout__title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: var(--color-accent); /* Resaltamos el título */
+    color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 /* =========================================
-   4. Block: Converter
+   4. Bloque: Converter
    ========================================= */
 .converter {
     background-color: var(--color-primary);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--color-secondary);
 }
 
 .converter__container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas: JSON y CSV */
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
     margin-bottom: 2rem;
 }
 
-/* Responsive: Una columna en móviles */
-@media (max-width: 600px) {
-    .converter__container {
-        grid-template-columns: 1fr;
-    }
-}
 
 .converter__input-group {
     display: flex;
@@ -89,52 +81,194 @@ body {
 }
 
 .converter__label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
     color: var(--color-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
 }
 
 .converter__control {
-    background-color: rgba(28, 7, 112, 0.5); /* Fondo oscuro semitransparente */
+    background-color: rgba(0, 0, 0, 0.2);
     border: 2px solid var(--color-secondary);
     border-radius: 8px;
     color: white;
-    padding: 1rem;
-    font-family: 'Courier New', Courier, monospace; /* Fuente de código */
-    resize: vertical;
+    padding: 1.2rem;
+    font-family: 'Cascadia Code', 'Courier New', monospace;
+    font-size: 14px;
+    min-height: 250px;
+    resize: none;
+    /* Mejor estética, controlamos el tamaño con min-height */
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .converter__control:focus {
     border-color: var(--color-accent);
+    box-shadow: 0 0 10px rgba(241, 255, 94, 0.2);
 }
 
-/* Botón con el color de acento */
+
+
 .converter__btn {
     background-color: var(--color-accent);
     color: var(--color-bg-dark);
     border: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 50px;
+    /* padding: 1.2rem 3rem; */
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 8px;
+    /* Cambiado a juego con los campos */
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.3s;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 0px #c4d12a;
+    /* Efecto de profundidad */
+    width: 200px;
+    height: 50px;
 }
 
 .converter__btn:hover {
-    transform: scale(1.05);
-    background-color: #e2f04d; /* Un tono un poco más oscuro del amarillo */
+    transform: translateY(-2px);
+    background-color: #f6ff8c;
+    box-shadow: 0 6px 0px #c4d12a;
 }
 
 .converter__btn:active {
-    transform: scale(0.98);
+    transform: translateY(2px);
+    box-shadow: 0 0px 0px #c4d12a;
 }
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #e53333;
-    color: white;
-    display: flex;
-    flex-direction: column; /* Alineación vertical para el main */
-    align-items: center;
+
+/* =========================================
+   5. State Modifiers
+   ========================================= */
+
+/* Error state on the JSON textarea */
+.converter__control--error {
+    border-color: #ff5c5c !important;
+    box-shadow: 0 0 10px rgba(255, 92, 92, 0.3);
+}
+
+/* Success flash on the CSV textarea */
+.converter__control--success {
+    border-color: #4ade80 !important;
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.35);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Inline error message */
+.converter__error {
+    color: #ff7a7a;
+    font-size: 0.85rem;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    min-height: 1.2em;
+    letter-spacing: 0.02em;
+}
+
+/* =========================================
+   6. Responsive — Media Queries
+   =========================================
+   Breakpoints:
+     Desktop  : ≥ 1024px  (default styles above already target this)
+     Tablet   : 768px – 1023px
+     Mobile   : ≤ 767px
+   ========================================= */
+
+/* ── Desktop (≥ 1024px) ── */
+@media (min-width: 1024px) {
+    .page-layout {
+        max-width: 960px;
+    }
+
+    .page-layout__title {
+        font-size: 2.8rem;
+    }
+
+    .converter__control {
+        min-height: 280px;
+        font-size: 14px;
+    }
+}
+
+/* ── Tablet (768px – 1023px) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .page-layout {
+        max-width: 720px;
+    }
+
+    .page-layout__title {
+        font-size: 2rem;
+        letter-spacing: 1.5px;
+    }
+
+    .converter {
+        padding: 2rem;
+    }
+
+    .converter__container {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .converter__control {
+        min-height: 220px;
+        font-size: 13px;
+    }
+
+    .converter__btn {
+        width: 180px;
+        height: 46px;
+        font-size: 1.05rem;
+    }
+}
+
+/* ── Mobile (≤ 767px) ── */
+@media (max-width: 767px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    .page-layout__title {
+        font-size: 1.6rem;
+        margin-bottom: 1.25rem;
+        letter-spacing: 1px;
+    }
+
+    .converter {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .converter__container {
+        grid-template-columns: 1fr;
+        /* Stack panels vertically */
+        gap: 16px;
+        margin-bottom: 1.25rem;
+    }
+
+    .converter__label {
+        font-size: 0.8rem;
+    }
+
+    .converter__control {
+        min-height: 160px;
+        font-size: 12px;
+        padding: 0.9rem;
+    }
+
+    .converter__btn {
+        width: 100%;
+        /* Full-width tap target */
+        height: 48px;
+        font-size: 1rem;
+    }
+
+    .converter__error {
+        font-size: 0.8rem;
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
+    }
 }

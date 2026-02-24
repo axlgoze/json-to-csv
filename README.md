@@ -1,10 +1,10 @@
-# project name
+# JSON to CSV
 
 
 ---
 
 
-[project name ✅](https://axlgoze.github.io/project-name/)
+[project name ✅](https://axlgoze.github.io/json-to-csv/)
 
 
 !["project name app"](./assets/)
@@ -52,3 +52,10 @@ Roadmap:
 ---
 ### About me
 [linkedin](https://www.linkedin.com/in/axel-reyes-wd/)
+
+
+todo
+
+- estilos a btn
+- estilos gral
+- responsive in diff files
