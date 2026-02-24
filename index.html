@@ -22,9 +22,17 @@
                 </div>
 
                 <div class="converter__input-group">
-                    <label class="converter__label" for="csv-input">CSV</label>
+                    <div class="converter__header">
+                        <label class="converter__label" for="csv-input">CSV</label>
+                        <div class="converter__actions">
+                            <button class="converter__icon-btn" id="copy-btn" title="Copy to clipboard"
+                                aria-label="Copy to clipboard">📋</button>
+                            <button class="converter__icon-btn" id="download-btn" title="Download CSV"
+                                aria-label="Download CSV">📥</button>
+                        </div>
+                    </div>
                     <textarea class="converter__control" id="csv-input" name="csv-input" spellcheck="false" readonly
-                        placeholder="click 'convert' &#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;receive &#10;your CSV 🐦‍🔥"></textarea>
+                        placeholder="click 'convert' &#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;receive &#10;your CSV 🐦‍🔥"></textarea>
                 </div>
             </div>
 

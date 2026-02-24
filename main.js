@@ -8,6 +8,8 @@ const csvInput = document.getElementById('csv-input');
 
 // Acciones
 const convertBtn = document.getElementById('convert-btn');
+const copyBtn = document.getElementById('copy-btn');
+const downloadBtn = document.getElementById('download-btn');
 
 // Etiquetas (opcional, por si necesitas cambiar el texto dinámicamente)
 const jsonLabel = document.querySelector('label[for="json-input"]');
@@ -17,6 +19,9 @@ const csvLabel = document.querySelector('label[for="csv-input"]');
 convertBtn.addEventListener("click", () => {
     convertJsonToCsv();
 });
+
+copyBtn.addEventListener("click", copyToClipboard);
+downloadBtn.addEventListener("click", downloadCSV);
 
 
 function convertJsonToCsv() {
@@ -85,6 +90,44 @@ function convertJsonToCsv() {
     setTimeout(() => csvInput.classList.remove('converter__control--success'), 1000);
 }
 
+
+/* ── Extra Actions ── */
+
+async function copyToClipboard() {
+    const text = csvInput.value.trim();
+    if (!text) {
+        showError('⚠️ Nothing to copy. Please convert some JSON first.');
+        return;
+    }
+    try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = '✅';
+        setTimeout(() => copyBtn.textContent = '📋', 2000);
+    } catch (err) {
+        showError('❌ Failed to copy to clipboard.');
+    }
+}
+
+function downloadCSV() {
+    const text = csvInput.value.trim();
+    if (!text) {
+        showError('⚠️ Nothing to download. Please convert some JSON first.');
+        return;
+    }
+    const blob = new Blob([text], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'data.csv';
+
+    // Append -> click -> remove
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    // Clean up
+    URL.revokeObjectURL(url);
+}
 
 /* ── Core helpers ── */
 
